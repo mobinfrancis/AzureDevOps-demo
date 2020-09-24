@@ -40,7 +40,7 @@ public class ListAllIndustries {
 	}
 	
 	@Test(priority = 2)
-	public void freshWorksTitleTest() {
+	public void ACNTitleTest() {
 		System.out.println("running title test...");
 		System.out.println(driver.getTitle());
 		assertEquals(driver.getTitle(), "This is a wrong title");
@@ -48,8 +48,10 @@ public class ListAllIndustries {
 	
 
 	@Test(priority = 3)
-	public void getAllIndustries() {
+	public void getAllIndustries() throws InterruptedException {
+		Thread.sleep(4000);
 		driver.findElement(By.xpath("//div[@data-target='#primaryLink3_Industries']/span")).click();
+		Thread.sleep(5000);
 		List<WebElement> industryList = driver.findElements(By.xpath("//ul[@aria-label='Industries']/li"));
 		industryList.forEach(ele -> System.out.println(ele.getText()));
 		assertEquals(industryList.size(), 19);
